@@ -1,0 +1,26 @@
+import requests
+from datetime import datetime
+
+# لیستی از ساب لینک‌هایی که می‌خواهید کانفیگ‌ها را از آن‌ها جمع‌آوری کنید
+sub_links = ['https://shervinofpersia.serv00.net', 'لینک2', 'لینک3']
+
+# تابعی برای دریافت و جمع‌آوری کانفیگ‌ها
+def fetch_configs(sub_links):
+    configs = ''
+    for link in sub_links:
+        response = requests.get(link)
+        if response.status_code == 200:
+            configs += response.text + '\n\n'
+    return configs
+
+# تابعی برای بارگذاری کانفیگ‌ها به ساب لینک اصلی
+def upload_to_main_sub(main_sub_link, configs):
+    # اینجا باید کد برای بارگذاری کانفیگ‌ها به ساب لینک اصلی قرار دهید
+    pass
+
+# اجرای اسکریپت
+if __name__ == '__main__':
+    configs = fetch_configs(sub_links)
+    main_sub_link = 'ساب لینک اصلی شما'
+    upload_to_main_sub(main_sub_link, configs)
+    print(f'Configs updated on {datetime.now()}')
